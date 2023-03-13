@@ -18,7 +18,10 @@ public class TrabajadorController {
     @Autowired
     private ITrabajadorService trabajadorS;
 
-
+    @GetMapping("/")
+    public String hol(){
+        return "Hola mundo";
+    }
 
     @PostMapping("/creartrabajador")
     public Trabajador saveTrabajador(@RequestBody Trabajador trabajador){
