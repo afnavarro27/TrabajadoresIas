@@ -12,5 +12,7 @@ public interface TrabajadorRepository extends JpaRepository<Trabajador, Integer>
     @Transactional(readOnly = true)
     public Optional<Trabajador>findByCedula(int cedula);
 
+
+
     public List<Trabajador> findAllByOrderByLiquidacionDesc();
 }

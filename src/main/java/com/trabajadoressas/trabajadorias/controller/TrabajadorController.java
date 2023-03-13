@@ -5,6 +5,7 @@ import com.trabajadoressas.trabajadorias.repository.TrabajadorRepository;
 import com.trabajadoressas.trabajadorias.service.ITrabajadorService;
 import com.trabajadoressas.trabajadorias.service.TrabajadorServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,11 +18,6 @@ import java.util.Optional;
 public class TrabajadorController {
     @Autowired
     private ITrabajadorService trabajadorS;
-
-    @GetMapping("/")
-    public String hol(){
-        return "Hola mundo";
-    }
 
     @PostMapping("/creartrabajador")
     public Trabajador saveTrabajador(@RequestBody Trabajador trabajador){
@@ -37,6 +33,11 @@ public class TrabajadorController {
     @GetMapping("/listarTercerTrabajador")
     public Optional<Trabajador> getTercerTrabajador(){
         return trabajadorS.findTercerTrabajador();
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public String deleteTrabajadorById(@PathVariable("id") Integer cedula) {
+        return trabajadorS.deleteById(cedula);
     }
 
 }

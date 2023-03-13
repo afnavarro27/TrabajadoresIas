@@ -10,7 +10,8 @@ public interface ITrabajadorService{
     public List<Trabajador> findAll();
     public void save(Trabajador trabajador);
     public Optional<Trabajador> findOne(Integer cedula);
-    public void delete(Integer cedula);
+    public String deleteById(Integer cedula);
+    public List<Trabajador>updateById(Integer cedula);
     //-------------------------------------
     public Optional<Trabajador> findTercerTrabajador();
 }

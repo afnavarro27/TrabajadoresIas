@@ -5,6 +5,7 @@ import com.trabajadoressas.trabajadorias.repository.TrabajadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -39,15 +40,25 @@ public class TrabajadorServiceImp implements ITrabajadorService {
     }
 
     @Override
-    public void delete(Integer cedula) {
-        trabajadorRepository.deleteById(cedula);
-    }
-
-    @Override
     public Optional<Trabajador> findTercerTrabajador() {
         Optional<Trabajador> tercerTrabajador = Optional.ofNullable(trabajadorRepository.findAllByOrderByLiquidacionDesc().get(2));
         return tercerTrabajador;
     }
 
+    public String deleteById(Integer cedula) {
+        Optional<Trabajador> trabajadorElimi = trabajadorRepository.findByCedula(cedula);
 
+        if (trabajadorElimi.isPresent()) {
+            Trabajador trabajador = trabajadorElimi.get();
+            trabajadorRepository.deleteById(cedula);
+            return "El trabajador nombre: " + trabajador.getNombreTrabajador() + " Cedula: " + trabajador.getCedula() + " ha sido eliminado con éxito.";
+        } else {
+            return "El trabajador con la cédula " + cedula + " no existe.";
+        }
+    }
+
+    @Override
+    public List<Trabajador> updateById(Integer cedula) {
+        return null;
+    }
 }
