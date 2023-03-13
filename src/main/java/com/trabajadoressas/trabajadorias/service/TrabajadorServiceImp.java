@@ -58,7 +58,15 @@ public class TrabajadorServiceImp implements ITrabajadorService {
     }
 
     @Override
-    public List<Trabajador> updateById(Integer cedula) {
-        return null;
+    public void updateById( Trabajador trabajador, Integer cedula) {
+        Optional<Trabajador> trabajadorActu = trabajadorRepository.findById(cedula);
+
+        Trabajador trabajadorExiste = trabajadorActu.get();
+        trabajadorExiste.setNombreTrabajador(trabajador.getNombreTrabajador());
+        trabajadorExiste.setAuxilioTransporte(trabajador.getAuxilioTransporte());
+        trabajadorExiste.setDiasLaborados(trabajador.getDiasLaborados());
+        trabajadorExiste.setSueldoTrabajador(trabajador.getSueldoTrabajador());
+
+        trabajadorRepository.save(trabajadorExiste);
     }
 }

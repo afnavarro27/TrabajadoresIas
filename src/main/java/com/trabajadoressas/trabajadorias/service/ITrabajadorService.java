@@ -11,7 +11,7 @@ public interface ITrabajadorService{
     public void save(Trabajador trabajador);
     public Optional<Trabajador> findOne(Integer cedula);
     public String deleteById(Integer cedula);
-    public List<Trabajador>updateById(Integer cedula);
+    public void updateById(Trabajador trabajador,Integer cedula);
     //-------------------------------------
     public Optional<Trabajador> findTercerTrabajador();
 }

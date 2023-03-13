@@ -40,4 +40,10 @@ public class TrabajadorController {
         return trabajadorS.deleteById(cedula);
     }
 
+    @PutMapping("/actualizar/{id}")
+    public Trabajador updateTrabajadorById(@PathVariable("id") Integer cedula, @RequestBody Trabajador trabajador) {
+        trabajadorS.updateById(trabajador, cedula);
+        return trabajador;
+    }
+
 }
