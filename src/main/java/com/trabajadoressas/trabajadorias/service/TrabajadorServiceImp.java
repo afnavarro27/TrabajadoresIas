@@ -25,7 +25,6 @@ public class TrabajadorServiceImp implements ITrabajadorService {
 
     @Override
     public void save(Trabajador trabajador) {
-
         trabajador.setVacaciones(calculo.vacaciones(trabajador));
         trabajador.setCesantias(calculo.cesantias(trabajador));
         trabajador.setInteresCesantia(calculo.interesCesantia(trabajador));

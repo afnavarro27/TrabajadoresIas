@@ -39,27 +39,4 @@ public class TrabajadorController {
         return trabajadorS.findTercerTrabajador();
     }
 
-    /*@PutMapping("/liquidados")
-    public String actualizarTrabajadores(@RequestBody List<Trabajador> trabajadoresActualizados) {
-        // Obtener todos los trabajadores existentes en la base de datos
-        List<Trabajador> trabajadores = trabajadorS.findAll();
-
-        // Actualizar los datos de cada trabajador existente con los nuevos valores proporcionados en la solicitud PUT
-        for (Trabajador trabajador : trabajadores) {
-            Trabajador trabajadorActualizado = trabajadoresActualizados.stream().filter(t -> t.getCedula().equals(trabajador.getCedula())).findFirst().orElse(null);
-            if (trabajadorActualizado != null) {
-                trabajador.setPrima(trabajadorActualizado.getPrima());
-                trabajador.setCesatias(trabajadorActualizado.getCesatias());
-                trabajador.setInteresCesantia(trabajadorActualizado.getInteresCesantia());
-                trabajador.setVacaiones(trabajadorActualizado.getVacaiones());
-                trabajador.setLiquidacion(trabajadorActualizado.getLiquidacion());
-            }
-        }
-
-        // Guardar los cambios en la base de datos utilizando el método saveAll() de JpaRepository
-        trabajadorRepository.saveAll(trabajadores);
-
-        return "";
-    }*/
-
 }
